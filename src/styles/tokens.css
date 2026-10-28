@@ -1,0 +1,54 @@
+:root {
+  /* Brand Theme Colors */
+  --color-brand-primary: #4f46e5;      /* Primary indigo */
+  --color-brand-hover: #4338ca;        /* Indigo 700 */
+  --color-brand-active: #3730a3;       /* Indigo 800 */
+  --color-brand-subtle: #eef2ff;       /* Indigo 50 */
+  --color-brand-border: #c7d2fe;       /* Indigo 200 */
+
+  /* Neutral & Surfaces */
+  --color-navy: #172033;               /* Dark navy */
+  --color-bg-page: #f8fafc;            /* Page background */
+  --color-bg-surface: #ffffff;         /* White surface */
+  --color-bg-muted: #f1f5f9;           /* Slate 100 */
+  --color-border: #e2e8f0;             /* Border */
+  --color-border-strong: #cbd5e1;      /* Border strong */
+
+  /* Typography */
+  --color-text-primary: #172033;       /* Dark navy typography */
+  --color-text-secondary: #334155;     /* Slate 700 */
+  --color-text-muted: #64748b;         /* Muted text */
+  --color-text-inverted: #ffffff;
+
+  /* Semantic Feedback */
+  --color-success: #15803d;            /* Success */
+  --color-success-bg: #f0fdf4;
+  --color-success-border: #bbf7d0;
+
+  --color-warning: #b45309;            /* Warning */
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+
+  --color-error: #b91c1c;              /* Error */
+  --color-error-bg: #fef2f2;
+  --color-error-border: #fecaca;
+
+  --color-info: #0369a1;               /* Info */
+  --color-info-bg: #f0f9ff;
+  --color-info-border: #bae6fd;
+
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 1px 3px 0 rgb(23 32 51 / 0.05), 0 1px 2px -1px rgb(23 32 51 / 0.05);
+  --shadow-elevated: 0 4px 6px -1px rgb(23 32 51 / 0.07), 0 2px 4px -2px rgb(23 32 51 / 0.05);
+  --shadow-dropdown: 0 10px 15px -3px rgb(23 32 51 / 0.08), 0 4px 6px -4px rgb(23 32 51 / 0.04);
+  --shadow-modal: 0 20px 25px -5px rgb(23 32 51 / 0.1), 0 8px 10px -6px rgb(23 32 51 / 0.06);
+
+  /* Radii */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
