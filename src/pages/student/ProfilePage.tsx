@@ -23,7 +23,7 @@ export const ProfilePage: React.FC = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   const activeName = user?.fullName || profile.fullName || 'Student'
-  const activeEmail = user?.email || profile.email || 'student@example.com'
+  const activeEmail = user?.email || profile.email || 'student@uniraah.pk'
   const activeBoard = user?.board || profile.board || 'Board of Intermediate Education Karachi (BIEK)'
   const activeGroup = user?.hscGroup || profile.hscGroup || 'Pre-Engineering'
   const activeAggregate = user?.hscTotalPredictedPercentage || profile.hscTotalPredictedPercentage || 82.5

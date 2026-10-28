@@ -165,7 +165,7 @@ export const DiscoverPage: React.FC = () => {
               <Input
                 label="Student Email Address"
                 type="email"
-                placeholder="e.g. student@example.com"
+                placeholder="e.g. candidate@gmail.com"
                 error={errors.email?.message}
                 helperText="Used for session notifications & report export"
                 {...register('email')}

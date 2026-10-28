@@ -146,7 +146,7 @@ export const PublicNavbar: React.FC = () => {
     } else {
       setIsMobileMenuOpen(false)
 
-      // Guard main features if guest
+      // Guard discovery & recommendations features if guest
       if (!isAuthenticated) {
         if (item.href === '/discover' || item.href === '/recommendations') {
           e.preventDefault()
@@ -154,13 +154,6 @@ export const PublicNavbar: React.FC = () => {
             'signin',
             '/discover',
             'Please sign in or create an account to start your personalized Karachi university degree discovery.'
-          )
-        } else if (item.href === '/advisor') {
-          e.preventDefault()
-          openAuthModal(
-            'signin',
-            '/advisor',
-            'Please sign in or create an account to consult the UniRaah AI Admission Advisor.'
           )
         }
       }

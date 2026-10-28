@@ -83,12 +83,7 @@ export const FinalCTASection: React.FC = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                onClick={() =>
-                  handleAction(
-                    '/advisor',
-                    'Sign in to ask Karachi admission eligibility questions to the AI Advisor.'
-                  )
-                }
+                onClick={() => navigate('/advisor')}
                 className="bg-white/10 hover:bg-white/20 active:bg-white/25 active:scale-[0.98] text-white border border-white/25 h-12 text-sm font-semibold hidden sm:inline-flex transition-all focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
               >
                 <BotMessageSquare className="h-4 w-4 mr-2" />

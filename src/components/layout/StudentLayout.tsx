@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Lock, LogIn, Sparkles } from 'lucide-react'
 
 export const StudentLayout: React.FC = () => {
-  const { isAuthenticated, openAuthModal, loginWithPersona } = useAuth()
+  const { isAuthenticated, openAuthModal } = useAuth()
   const location = useLocation()
 
   useEffect(() => {
@@ -63,56 +63,6 @@ export const StudentLayout: React.FC = () => {
                 <Sparkles className="h-4 w-4 text-brand" />
                 <span>Create Student Account</span>
               </Button>
-            </div>
-
-            {/* Instant Demo Personas for Quick Evaluation */}
-            <div className="pt-8 border-t border-slate-200/80">
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                Or Instant 1-Click Evaluation Personas
-              </p>
-              <div className="grid gap-2 sm:grid-cols-3 text-left">
-                <button
-                  type="button"
-                  onClick={() => loginWithPersona('hamza')}
-                  className="p-3 rounded-xl border border-slate-200 bg-white hover:border-brand-400 hover:bg-brand-50/40 transition-all cursor-pointer shadow-2xs group"
-                >
-                  <p className="text-xs font-bold text-navy group-hover:text-brand">
-                    Muhammad Hamza
-                  </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Pre-Engineering</p>
-                  <span className="text-[10px] font-bold text-brand bg-brand-50 px-1.5 py-0.2 rounded mt-1.5 inline-block">
-                    82.5% Predicted
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => loginWithPersona('aisha')}
-                  className="p-3 rounded-xl border border-slate-200 bg-white hover:border-brand-400 hover:bg-brand-50/40 transition-all cursor-pointer shadow-2xs group"
-                >
-                  <p className="text-xs font-bold text-navy group-hover:text-brand">
-                    Aisha Fatima
-                  </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Computer Science</p>
-                  <span className="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.2 rounded mt-1.5 inline-block">
-                    86.8% Predicted
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => loginWithPersona('bilal')}
-                  className="p-3 rounded-xl border border-slate-200 bg-white hover:border-brand-400 hover:bg-brand-50/40 transition-all cursor-pointer shadow-2xs group"
-                >
-                  <p className="text-xs font-bold text-navy group-hover:text-brand">
-                    Bilal Tariq
-                  </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Pre-Medical</p>
-                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded mt-1.5 inline-block">
-                    89.2% Predicted
-                  </span>
-                </button>
-              </div>
             </div>
 
             <div className="pt-4">

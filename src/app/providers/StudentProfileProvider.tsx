@@ -6,7 +6,7 @@ import { studentDashboardApi, ApiError } from '@/services/api/studentDashboardAp
 
 export const initialStudentProfile: StudentAcademicProfile = {
   fullName: 'Muhammad Hamza',
-  email: 'hamza.karachi@example.com',
+  email: 'hamza.student@uniraah.pk',
   hscGroup: 'Pre-Engineering',
   board: 'Board of Intermediate Education Karachi (BIEK)',
   sscPercentage: 84.5,

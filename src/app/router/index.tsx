@@ -26,10 +26,11 @@ import { CutoffsPage } from '@/pages/admin/CutoffsPage'
 import { DocumentsPage } from '@/pages/admin/DocumentsPage'
 import { LoginPage } from '@/pages/auth/LoginPage'
 import { DesignSystemShowcasePage } from '@/pages/DesignSystemShowcasePage'
+import { PublicAdvisorPage } from '@/pages/PublicAdvisorPage'
 import { ROUTES } from './routes'
 
 export const router = createBrowserRouter([
-  // 1. Public Marketing Shell (Landing Page)
+  // 1. Public Marketing Shell (Landing Page & Standalone Tools)
   {
     path: '/',
     element: <PublicLayout />,
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'advisor',
+        element: <PublicAdvisorPage />,
       },
     ],
   },
@@ -124,11 +129,7 @@ export const router = createBrowserRouter([
     ],
   },
 
-  // Top-Level Route Aliases & Direct Fallbacks (mapped directly to Student Dashboard)
-  {
-    path: '/advisor',
-    element: <Navigate to={ROUTES.STUDENT.ADVISOR} replace />,
-  },
+  // Top-Level Route Aliases & Direct Fallbacks
   {
     path: '/profile',
     element: <Navigate to={ROUTES.STUDENT.PROFILE} replace />,

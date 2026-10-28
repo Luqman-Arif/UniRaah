@@ -90,7 +90,7 @@ export const AcademicProfileForm: React.FC = () => {
     resetProfile()
     reset({
       fullName: 'Muhammad Hamza',
-      email: 'hamza.karachi@example.com',
+      email: 'hamza.student@uniraah.pk',
       hscGroup: 'Pre-Engineering',
       board: 'Board of Intermediate Education Karachi (BIEK)',
       sscPercentage: 84.5,
@@ -132,7 +132,7 @@ export const AcademicProfileForm: React.FC = () => {
           <Input
             label="Email Address"
             type="email"
-            placeholder="e.g. daniyal@example.com"
+            placeholder="e.g. daniyal@gmail.com"
             error={errors.email?.message}
             {...register('email')}
           />

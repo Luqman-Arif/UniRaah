@@ -153,7 +153,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const fallbackUser: AuthUser = {
           id: userMock.id || 'student-hamza',
           fullName: userMock.fullName || 'Muhammad Hamza',
-          email: userMock.email || 'hamza.karachi@example.com',
+          email: userMock.email || 'hamza.student@uniraah.pk',
           role: userMock.role || 'student',
           hscGroup: userMock.hscGroup || 'Pre-Engineering',
           board: userMock.board || 'Board of Intermediate Education Karachi (BIEK)',

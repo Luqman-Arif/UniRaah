@@ -253,8 +253,8 @@ export function validateEmail(email: string): EmailValidationResult {
   // Check if domain is a recognized public email provider
   const isRecognizedProvider = RECOGNIZED_MAIL_PROVIDERS.has(domain)
 
-  // Demo domains allowed for seeded evaluation personas
-  const isDemoDomain = domain === 'example.com'
+  // Institutional and platform domains allowed
+  const isDemoDomain = domain === 'example.com' || domain === 'uniraah.pk' || domain === 'uniraah.com'
 
   // If the domain is neither a recognized email service nor an educational institution nor a demo domain:
   if (!isRecognizedProvider && !isEducationalDomain && !isDemoDomain) {

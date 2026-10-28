@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { GraduationCap, ShieldCheck, ArrowRight } from 'lucide-react'
+import { GraduationCap, ShieldCheck } from 'lucide-react'
 
 export const PublicFooter: React.FC = () => {
   const location = useLocation()
@@ -167,15 +167,6 @@ export const PublicFooter: React.FC = () => {
             <p className="text-xs text-slate-500 leading-relaxed">
               Initial scope covers ~15–20 universities across Karachi, including NED UET, FAST-NUCES, KU (UBIT), IBA Karachi, DUHS, Habib University, SSUET, and Dawood UET.
             </p>
-            <div className="pt-2">
-              <Link
-                to="/admin"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-navy transition-colors bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg"
-              >
-                <span>Institutional Admin Portal</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
           </div>
         </div>
 

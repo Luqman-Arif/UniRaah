@@ -16,10 +16,12 @@ import {
   Sliders,
   Database,
   Edit3,
+  ShieldCheck,
+  GraduationCap,
 } from 'lucide-react'
 
 export const AccountSettingsPage: React.FC = () => {
-  const { user, loginWithPersona, logout } = useAuth()
+  const { user, logout } = useAuth()
   const { profile, updateProfile, resetProfile } = useStudentProfile()
   const {
     clearAllSavedProgrammes,
@@ -35,11 +37,6 @@ export const AccountSettingsPage: React.FC = () => {
   const [budgetPeriod, setBudgetPeriod] = useState(profile.preferences.budgetPeriod || 'annual')
 
   const navigate = useNavigate()
-
-  const handlePersonaSwitch = (persona: 'hamza' | 'aisha' | 'bilal') => {
-    loginWithPersona(persona)
-    showToast('Persona Switched', `Active student account switched to ${persona.toUpperCase()}.`, 'success')
-  }
 
   const handleBudgetPeriodChange = (val: 'annual' | 'semester') => {
     setBudgetPeriod(val)
@@ -79,20 +76,20 @@ export const AccountSettingsPage: React.FC = () => {
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          Manage your student persona, display preferences, alert notifications, and local session data.
+          Manage your verified academic credentials, tuition display preferences, notifications, and local session data.
         </p>
       </div>
 
-      {/* 1. Active Persona & Profile Card */}
+      {/* 1. Verified Student Profile & Credentials Card */}
       <Card className="border-slate-200 bg-white shadow-xs overflow-hidden">
         <CardHeader className="p-5 sm:p-6 border-b border-slate-100 bg-slate-50/50">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
               <CardTitle className="text-sm font-extrabold text-navy">
-                Active Student Persona
+                Student Account Profile
               </CardTitle>
               <CardDescription className="text-xs text-slate-500 mt-0.5">
-                Switch instantly between pre-calibrated Karachi student profiles to test different admission scenarios.
+                Your verified academic credentials and admission criteria for Karachi university recommendations.
               </CardDescription>
             </div>
 
@@ -108,67 +105,58 @@ export const AccountSettingsPage: React.FC = () => {
           </div>
         </CardHeader>
 
-        <CardContent className="p-5 sm:p-6 space-y-4">
-          <div className="grid gap-3 sm:grid-cols-3">
-            {/* Hamza Persona */}
-            <button
-              type="button"
-              onClick={() => handlePersonaSwitch('hamza')}
-              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-                user?.email.includes('hamza')
-                  ? 'border-brand bg-brand-50/50 ring-2 ring-brand-500/20'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold text-navy">Muhammad Hamza</span>
-                {user?.email.includes('hamza') && (
-                  <CheckCircle2 className="h-4 w-4 text-brand" />
-                )}
-              </div>
-              <p className="text-[11px] text-slate-500 mt-1">Pre-Engineering • BIEK</p>
-              <p className="text-xs font-black text-brand mt-2">82.5% Target</p>
-            </button>
+        <CardContent className="p-5 sm:p-6">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {/* Candidate Identity */}
+            <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Registered Candidate
+              </span>
+              <p className="text-sm font-bold text-navy mt-1">
+                {user?.fullName || profile.fullName || 'Enrolled Student'}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5 truncate">
+                {user?.email || profile.email || 'student@domain.pk'}
+              </p>
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-2.5">
+                <ShieldCheck className="h-3 w-3 text-emerald-600" />
+                <span>Verified Account</span>
+              </span>
+            </div>
 
-            {/* Aisha Persona */}
-            <button
-              type="button"
-              onClick={() => handlePersonaSwitch('aisha')}
-              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-                user?.email.includes('aisha')
-                  ? 'border-brand bg-brand-50/50 ring-2 ring-brand-500/20'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold text-navy">Aisha Fatima</span>
-                {user?.email.includes('aisha') && (
-                  <CheckCircle2 className="h-4 w-4 text-brand" />
-                )}
-              </div>
-              <p className="text-[11px] text-slate-500 mt-1">Computer Science • FBISE</p>
-              <p className="text-xs font-black text-brand mt-2">86.8% Target</p>
-            </button>
+            {/* Academic Track */}
+            <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Academic Group & Board
+              </span>
+              <p className="text-sm font-bold text-navy mt-1">
+                {user?.hscGroup || profile.hscGroup || 'Pre-Engineering'}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5 truncate">
+                {user?.board || profile.board || 'BIEK Karachi'}
+              </p>
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-brand bg-brand-50 px-2 py-0.5 rounded-full mt-2.5">
+                <GraduationCap className="h-3 w-3 text-brand" />
+                <span>Karachi HSC Stream</span>
+              </span>
+            </div>
 
-            {/* Bilal Persona */}
-            <button
-              type="button"
-              onClick={() => handlePersonaSwitch('bilal')}
-              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-                user?.email.includes('bilal')
-                  ? 'border-brand bg-brand-50/50 ring-2 ring-brand-500/20'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold text-navy">Bilal Tariq</span>
-                {user?.email.includes('bilal') && (
-                  <CheckCircle2 className="h-4 w-4 text-brand" />
-                )}
-              </div>
-              <p className="text-[11px] text-slate-500 mt-1">Pre-Medical • BIEK</p>
-              <p className="text-xs font-black text-brand mt-2">89.2% Target</p>
-            </button>
+            {/* Target Percentage */}
+            <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                HSC Admission Target
+              </span>
+              <p className="text-sm font-black text-brand mt-1">
+                {user?.hscTotalPredictedPercentage || profile.hscTotalPredictedPercentage || 82.5}%
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Home: {profile.preferences?.homeLocation || 'Karachi'}
+              </p>
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full mt-2.5">
+                <CheckCircle2 className="h-3 w-3 text-indigo-600" />
+                <span>Admission Calibrated</span>
+              </span>
+            </div>
           </div>
         </CardContent>
       </Card>

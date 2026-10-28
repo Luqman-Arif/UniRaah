@@ -66,7 +66,7 @@ export const DEMO_PERSONAS_CATALOG: Record<'hamza' | 'aisha' | 'bilal', DemoPers
   hamza: {
     id: 'hamza',
     name: 'Muhammad Hamza',
-    email: 'hamza.karachi@example.com',
+    email: 'hamza.student@uniraah.pk',
     group: 'Pre-Engineering',
     board: 'Board of Intermediate Education Karachi (BIEK)',
     percentage: 82.5,
@@ -76,14 +76,14 @@ export const DEMO_PERSONAS_CATALOG: Record<'hamza' | 'aisha' | 'bilal', DemoPers
   aisha: {
     id: 'aisha',
     name: 'Aisha Fatima',
-    email: 'aisha.fbise@example.com',
+    email: 'aisha.fbise@uniraah.pk',
     group: 'Computer Science',
     board: 'Federal Board of Intermediate & Secondary Education (FBISE)',
     percentage: 86.8,
     defaultPassword: 'password123',
     profile: {
       fullName: 'Aisha Fatima',
-      email: 'aisha.fbise@example.com',
+      email: 'aisha.fbise@uniraah.pk',
       hscGroup: 'Computer Science',
       board: 'Federal Board of Intermediate & Secondary Education (FBISE)',
       sscPercentage: 88.0,
@@ -104,14 +104,14 @@ export const DEMO_PERSONAS_CATALOG: Record<'hamza' | 'aisha' | 'bilal', DemoPers
   bilal: {
     id: 'bilal',
     name: 'Bilal Tariq',
-    email: 'bilal.premed@example.com',
+    email: 'bilal.premed@uniraah.pk',
     group: 'Pre-Medical',
     board: 'Board of Intermediate Education Karachi (BIEK)',
     percentage: 89.2,
     defaultPassword: 'password123',
     profile: {
       fullName: 'Bilal Tariq',
-      email: 'bilal.premed@example.com',
+      email: 'bilal.premed@uniraah.pk',
       hscGroup: 'Pre-Medical',
       board: 'Board of Intermediate Education Karachi (BIEK)',
       sscPercentage: 91.0,
@@ -191,7 +191,7 @@ class AuthService {
           {
             id: 'student-hamza',
             fullName: 'Muhammad Hamza',
-            email: 'hamza.karachi@example.com',
+            email: 'hamza.student@uniraah.pk',
             role: 'student',
             hscGroup: 'Pre-Engineering',
             board: 'Board of Intermediate Education Karachi (BIEK)',
@@ -203,7 +203,7 @@ class AuthService {
           {
             id: 'student-aisha',
             fullName: 'Aisha Fatima',
-            email: 'aisha.fbise@example.com',
+            email: 'aisha.fbise@uniraah.pk',
             role: 'student',
             hscGroup: 'Computer Science',
             board: 'Federal Board of Intermediate & Secondary Education (FBISE)',
@@ -215,7 +215,7 @@ class AuthService {
           {
             id: 'student-bilal',
             fullName: 'Bilal Tariq',
-            email: 'bilal.premed@example.com',
+            email: 'bilal.premed@uniraah.pk',
             role: 'student',
             hscGroup: 'Pre-Medical',
             board: 'Board of Intermediate Education Karachi (BIEK)',
@@ -489,7 +489,12 @@ class AuthService {
       return { success: false, error: 'Please enter your email address.' }
     }
 
-    const account = this.users.find((u) => u.email.toLowerCase() === cleanEmail)
+    const account = this.users.find(
+      (u) =>
+        u.email.toLowerCase() === cleanEmail ||
+        u.email.toLowerCase().replace('@example.com', '@uniraah.pk') === cleanEmail ||
+        u.email.toLowerCase().replace('@uniraah.pk', '@example.com') === cleanEmail
+    )
 
     if (!account) {
       return {

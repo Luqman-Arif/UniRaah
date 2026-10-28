@@ -130,39 +130,49 @@ describe('UniRaah Professional Authentication Test Suite', () => {
     assert.equal(targetUser.passwordHash, 'new_updated_hash_456')
   })
 
-  it('Auth 6: Verification code is NOT exposed to client UI state and requires user email check', () => {
-    const pendingSessions = new Map()
-    const email = 'student.karachi@gmail.com'
-    const code = '582914'
-    const expiresAt = Date.now() + 10 * 60 * 1000
-
-    // Stored in backend / server session
-    pendingSessions.set(email, { code, expiresAt })
-
-    // UI Response returned to frontend must NOT contain code
-    const clientResponse = {
-      success: true,
-      expiresAt,
+  it('Auth 6: Direct professional account creation registers user and logs in immediately without OTP', () => {
+    const users = []
+    const newStudent = {
+      id: 'student-direct-1',
+      fullName: 'Daniyal Ahmed',
+      email: 'daniyal.ahmed@example.com',
+      role: 'student',
+      hscGroup: 'Pre-Engineering',
+      board: 'Board of Intermediate Education Karachi (BIEK)',
+      hscTotalPredictedPercentage: 84.5,
+      passwordHash: 'btoa_mock_hash_789',
     }
 
-    assert.equal(clientResponse.code, undefined, 'OTP code is omitted from client payload')
-    assert.equal(pendingSessions.get(email).code, '582914', 'Code stored in verification session')
+    // Direct account registration without OTP intermediate requirement
+    users.push(newStudent)
+    localStorage.setItem('uniraah_registered_users_v2', JSON.stringify(users))
+
+    // Token creation and active session saving
+    const token = `uniraah_jwt_${newStudent.id}_${Date.now()}`
+    const sessionRecord = { user: newStudent, token }
+    localStorage.setItem('uniraah_auth_session_v2', JSON.stringify(sessionRecord))
+
+    const storedSession = JSON.parse(localStorage.getItem('uniraah_auth_session_v2'))
+    assert.ok(storedSession)
+    assert.equal(storedSession.user.fullName, 'Daniyal Ahmed')
+    assert.equal(storedSession.user.email, 'daniyal.ahmed@example.com')
+    assert.ok(storedSession.token.startsWith('uniraah_jwt_'))
   })
 
-  it('Auth 7: Rejects invalid or mismatched OTP code and verifies correct 6-digit code', () => {
-    const activeSession = { code: '849201', expiresAt: Date.now() + 600000 }
-
-    const verify = (enteredCode) => {
-      if (enteredCode !== activeSession.code && enteredCode !== '123456') {
-        return { success: false, error: 'Invalid verification code' }
+  it('Auth 7: Rejects mismatching passwords during account creation and enforces validation', () => {
+    const validateSignUpCredentials = (pass, confirmPass) => {
+      if (!pass || pass.length < 6) {
+        return { success: false, error: 'Password must be at least 6 characters long' }
+      }
+      if (pass !== confirmPass) {
+        return { success: false, error: 'Passwords do not match' }
       }
       return { success: true }
     }
 
-    assert.equal(verify('000000').success, false)
-    assert.equal(verify('999999').success, false)
-    assert.equal(verify('849201').success, true)
-    assert.equal(verify('123456').success, true, 'Demo fallback code also accepted')
+    assert.equal(validateSignUpCredentials('pass123', 'pass456').success, false)
+    assert.equal(validateSignUpCredentials('pass123', 'pass123').success, true)
+    assert.equal(validateSignUpCredentials('123', '123').success, false)
   })
 })
 
