@@ -88,11 +88,6 @@ export const PublicFooter: React.FC = () => {
                   AI Admission Advisor
                 </Link>
               </li>
-              <li>
-                <Link to="/login" className="hover:text-brand transition-colors font-medium text-slate-700">
-                  Sign In / Demo Mode
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -176,9 +171,8 @@ export const PublicFooter: React.FC = () => {
             <strong className="text-navy font-semibold">Admissions Disclaimer:</strong> UniRaah is an independent educational decision-support tool. Admission cutoffs, aggregate calculations, and degree recommendations are statistical planning benchmarks derived from historical published lists and do not constitute an official admission guarantee. Final admission offers and merit lists are issued solely by respective university syndicates.
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400">
+          <div className="text-center text-slate-400">
             <p>© {currentYear} UniRaah. Higher Secondary Decision Support for Karachi, Pakistan.</p>
-            <p>Designed for intermediate students across BIEK, FBISE, AKU-EB, and Cambridge.</p>
           </div>
         </div>
       </div>
